@@ -5,7 +5,7 @@
 
 {% include head.md %}
 
-# 文章列表
+## 文章列表
 
 {% for post in site.posts %}
 
