@@ -22,3 +22,4 @@
 {{ page.date | date_to_string }}
 
 {% include tail.md %}
+{% include comment.html %}
