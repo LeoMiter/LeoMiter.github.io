@@ -1,3 +1,2 @@
 * * *
-[返回][1]
-[1]: http://leomiter.com/
+[返回](http://leomiter.com/)
