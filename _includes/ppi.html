@@ -1,0 +1,60 @@
+<script type="text/javascript" charset="utf-8">
+
+function gcd(a, b)
+{
+    if(b == 0)
+    {
+        return a;
+    }
+    return gcd(b, a % b);
+}
+
+function calcppi()
+{
+    var height;
+    var width;
+    var length;
+
+    height = document.getElementsByName("h")[0].value;
+    width = document.getElementsByName("w")[0].value;
+    length = document.getElementsByName("l")[0].value;
+
+    var value = (height * height) + (width * width);
+    var sqr = Math.sqrt(value);
+    var g = gcd(width, height);
+    var bw = width / g;
+    var bh = height / g;
+    if ((bw < 16) && (16 % bw == 0))
+    {
+        var x = 16 / bw;
+        bw = bw * x;
+        bh = bh * x;
+    }
+    document.getElementById("output").innerHTML += document.getElementsByName("name")[0].value + " : ";
+    document.getElementById("output").innerHTML += width + " * " + height;
+    document.getElementById("output").innerHTML += " (" + bw+ " : " + bh+ ") ";
+    document.getElementById("output").innerHTML += " @ " + length + "寸 : PPI="; 
+    document.getElementById("output").innerHTML += Math.round(sqr / length);
+    document.getElementById("output").innerHTML += "<br>";
+}
+function cleardiv()
+{
+    document.getElementById("output").innerHTML = ""; 
+
+}
+</script>
+
+<div id="first" align="center">
+    <table border="0">
+        <tr>
+            <p>设备名字：<input type="text" name="name" value=""/></p>
+            <p>宽（像素）：<input type="text" name="w" value=""/>&nbsp;&nbsp;&nbsp;高（像素）：<input type="text" name="h" value=""/></p>
+            <p>大小（寸）：<input type="text" name="l" value=""/></p>
+            <p><input type="button" value="计算" onclick="calcppi();"/>&nbsp;<input type="button" value="清空" onclick="cleardiv();"/></p>
+        </tr>
+        <tr>
+            <div id="output">
+            </div>
+        </tr>
+    </table>
+</div>
